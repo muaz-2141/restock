@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESTOCK — Buy PS5, PS4 &amp; Xbox Games Online</title>
+<meta name="description" content="Shop new and pre-owned PS5, PS4, and Xbox games at RESTOCK. Browse in-stock titles, add to cart, and check out in minutes.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://restock.best/">
+
+<!-- Open Graph (Facebook, LinkedIn, Discord, iMessage previews) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="RESTOCK — Buy PS5, PS4 & Xbox Games Online">
+<meta property="og:description" content="New and pre-owned PS5, PS4, and Xbox titles. Browse the shelf and check out in minutes.">
+<meta property="og:url" content="https://restock.best/">
+<meta property="og:image" content="https://restock.best/og-image.png">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RESTOCK — Buy PS5, PS4 & Xbox Games Online">
+<meta name="twitter:description" content="New and pre-owned PS5, PS4, and Xbox titles. Browse the shelf and check out in minutes.">
+<meta name="twitter:image" content="https://restock.best/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2312141a'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial Black, sans-serif' fill='%23ffc93c' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0f14;
+    --shelf:#1a1d27;
+    --shelf-2:#232838;
+    --shelf-3:#2b3145;
+    --paper:#eae6da;
+    --tag:#ffc93c;
+    --tag-ink:#3a2c02;
+    --ps:#2e7cf6;
+    --xbx:#3fae3f;
+    --used:#ff6b57;
+    --line: rgba(234,230,218,0.11);
+    --line-soft: rgba(234,230,218,0.07);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.35);
+    --shadow-lg: 0 20px 48px rgba(0,0,0,0.45);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Space Grotesk', sans-serif;
+    min-height:100vh;
+  }
+  .display{font-family:'Anton', sans-serif; letter-spacing:0.5px; text-transform:uppercase;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  a{color:inherit;}
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 32px;
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,15,20,0.85);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    box-shadow:0 1px 0 rgba(255,255,255,0.03), var(--shadow-sm);
+    gap:12px;
+  }
+  .logo{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .logo .mark{
+    width:34px; height:34px; border-radius:9px;
+    background:linear-gradient(135deg, var(--ps), var(--xbx));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Anton'; font-size:18px; color:var(--ink);
+    flex-shrink:0;
+    box-shadow:0 3px 10px rgba(46,124,246,0.25);
+  }
+  .logo .word{font-family:'Anton'; font-size:22px; letter-spacing:1px;}
+  .nav-links{display:flex; gap:30px; font-size:13.5px; font-weight:500; opacity:0.8;}
+  .nav-links a{text-decoration:none; position:relative; padding-bottom:2px; white-space:nowrap; transition:opacity .15s ease;}
+  .nav-links a:hover{opacity:1;}
+  .cart-btn{
+    display:flex; align-items:center; gap:6px;
+    background:var(--tag); color:var(--tag-ink);
+    border:none; padding:9px 15px; border-radius:999px;
+    font-weight:700; font-size:13px; cursor:pointer;
+    font-family:'Space Grotesk'; flex-shrink:0; white-space:nowrap;
+    box-shadow:0 3px 12px rgba(255,201,60,0.22);
+    transition:transform .15s ease, filter .15s ease;
+  }
+  .cart-btn:hover{filter:brightness(1.06); transform:translateY(-1px);}
+  .topbar-right{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  #auth-area{display:flex; align-items:center; gap:8px;}
+  .ghost-btn{
+    background:transparent; border:1px solid var(--line); color:var(--paper);
+    padding:9px 14px; border-radius:999px; font-weight:600; font-size:13px; cursor:pointer;
+    font-family:'Space Grotesk'; white-space:nowrap; transition:border-color .15s ease;
+  }
+  .ghost-btn:hover{border-color:rgba(234,230,218,0.4);}
+  .sell-btn{
+    background:transparent; border:1px solid var(--tag); color:var(--tag);
+    padding:9px 14px; border-radius:999px; font-weight:700; font-size:13px; cursor:pointer;
+    font-family:'Space Grotesk'; white-space:nowrap; transition:background .15s ease, color .15s ease;
+  }
+  .sell-btn:hover{background:var(--tag); color:var(--tag-ink);}
+  .menu-btn{
+    display:none; background:transparent; border:1px solid var(--line); color:var(--paper);
+    width:38px; height:38px; border-radius:8px; font-size:16px; cursor:pointer; flex-shrink:0;
+  }
+  .mobile-nav{
+    display:none; flex-direction:column; gap:2px;
+    padding:10px 20px 18px; border-bottom:1px solid var(--line);
+    background:rgba(18,20,26,0.98);
+  }
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{
+    color:var(--paper); text-decoration:none; padding:12px 4px;
+    border-bottom:1px solid rgba(234,230,218,0.08); font-size:15px; cursor:pointer;
+  }
+  .mobile-nav a:last-child{border-bottom:none;}
+  .account-chip{
+    display:flex; align-items:center; gap:8px;
+    background:var(--shelf-2); border:1px solid var(--line);
+    padding:6px 8px 6px 6px; border-radius:999px; font-size:13px; cursor:pointer;
+    max-width:150px;
+  }
+  .account-chip span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .account-chip .avatar{
+    width:26px; height:26px; border-radius:50%;
+    background:linear-gradient(135deg, var(--ps), var(--xbx));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Anton'; font-size:12px; color:var(--ink);
+  }
+  .seller-badge{
+    background:var(--tag); color:var(--tag-ink); font-family:'JetBrains Mono';
+    font-size:9px; font-weight:700; padding:2px 6px; border-radius:999px; margin-left:2px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:72px 32px 48px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(ellipse 600px 400px at 85% 20%, rgba(46,124,246,0.10), transparent 60%),
+      radial-gradient(ellipse 500px 350px at 95% 60%, rgba(63,174,63,0.08), transparent 60%);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:40px;
+    max-width:1200px; margin:0 auto; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:2.2px;
+    text-transform:uppercase; color:var(--tag); margin-bottom:20px;
+  }
+  .eyebrow::before{content:''; width:7px; height:7px; background:var(--tag); border-radius:50%; display:inline-block; box-shadow:0 0 8px rgba(255,201,60,0.6);}
+  .hero h1{
+    font-size:clamp(40px, 6vw, 72px);
+    line-height:0.95;
+    margin-bottom:22px;
+    letter-spacing:0.2px;
+  }
+  .hero h1 .ps-word{color:var(--ps);}
+  .hero h1 .xbx-word{color:var(--xbx);}
+  .hero p{
+    font-size:16px; opacity:0.7; max-width:440px; margin-bottom:30px; line-height:1.6;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--paper); color:var(--ink); border:none;
+    padding:15px 28px; border-radius:999px; font-weight:700; font-size:14px;
+    cursor:pointer; text-decoration:none; display:inline-block;
+    box-shadow:var(--shadow-md);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,0.4);}
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--paper);
+    padding:15px 28px; border-radius:999px; font-weight:600; font-size:14px;
+    background:transparent; cursor:pointer; text-decoration:none; display:inline-block;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .btn-ghost:hover{border-color:rgba(234,230,218,0.4); background:rgba(234,230,218,0.04);}
+
+  /* shelf visual - signature element */
+  .shelf-visual{
+    position:relative; height:380px;
+    display:flex; align-items:flex-end; justify-content:center;
+    perspective:900px;
+  }
+  .spine-row{
+    display:flex; align-items:flex-end; gap:4px;
+    transform: rotateX(6deg);
+    transform-style:preserve-3d;
+  }
+  .spine{
+    width:26px; border-radius:3px 3px 0 0;
+    display:flex; align-items:flex-end; justify-content:center;
+    padding-bottom:10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    transition: transform .25s ease;
+    cursor:default;
+  }
+  .spine:hover{ transform: translateY(-14px); }
+  .spine span{
+    writing-mode: vertical-rl;
+    font-family:'JetBrains Mono'; font-size:10px; letter-spacing:1px;
+    color:rgba(0,0,0,0.55); font-weight:700;
+  }
+  .shelf-board{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:100%; height:14px; background:var(--shelf-2);
+    border-top:2px solid rgba(255,255,255,0.06);
+  }
+
+  /* ---------- section header ---------- */
+  .section{padding:64px 32px; max-width:1200px; margin:0 auto;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:32px; flex-wrap:wrap; gap:10px;
+    position:relative; padding-bottom:20px;
+  }
+  .section-head::after{
+    content:''; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:linear-gradient(90deg, var(--line) 0%, transparent 70%);
+  }
+  .section-head h2{font-size:29px; letter-spacing:0.3px;}
+  .section-head .count{font-family:'JetBrains Mono'; font-size:12.5px; opacity:0.45;}
+
+  .filter-row{display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap;}
+  .chip{
+    font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:0.4px;
+    padding:8px 15px; border-radius:999px; border:1px solid var(--line);
+    background:rgba(255,255,255,0.02); color:var(--paper); cursor:pointer; opacity:0.62;
+    transition:opacity .15s ease, background .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .chip:hover{opacity:0.85;}
+  .chip.active{opacity:1; background:var(--paper); color:var(--ink); border-color:var(--paper); font-weight:700; box-shadow:var(--shadow-sm);}
+
+  /* ---------- product grid (game case cards) ---------- */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+    gap:18px;
+  }
+  .card{
+    background:linear-gradient(180deg, var(--shelf) 0%, var(--shelf-2) 100%);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    position:relative;
+    transition: transform .2s cubic-bezier(.2,.8,.2,1), border-color .2s ease, box-shadow .2s ease;
+    box-shadow:var(--shadow-sm);
+  }
+  .card:hover{transform:translateY(-5px); border-color:rgba(255,201,60,0.35); box-shadow:var(--shadow-lg);}
+  .cover{
+    aspect-ratio: 3/4;
+    position:relative;
+    overflow:hidden;
+    background:var(--shelf-2);
+  }
+  .cover svg{ position:absolute; inset:0; }
+  .cover::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.28) 100%);
+    pointer-events:none;
+  }
+  .plat-badge{
+    position:absolute; top:10px; left:10px; z-index:2;
+    font-family:'JetBrains Mono'; font-size:10px; font-weight:700;
+    background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+    padding:4px 8px; border-radius:6px; letter-spacing:1px;
+  }
+  .cond-badge{
+    position:absolute; top:10px; right:10px; z-index:2;
+    font-family:'JetBrains Mono'; font-size:10px; font-weight:700;
+    padding:4px 8px; border-radius:6px; letter-spacing:0.5px;
+  }
+  .cond-new{background:var(--tag); color:var(--tag-ink);}
+  .cond-used{background:var(--used); color:#2b0a04;}
+
+  .tag-corner{
+    position:absolute; bottom:10px; right:10px; z-index:2;
+    background:var(--tag); color:var(--tag-ink);
+    font-family:'JetBrains Mono'; font-weight:700; font-size:13px;
+    padding:5px 9px; border-radius:6px 6px 6px 2px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.35);
+  }
+  .info{padding:15px 15px 17px; display:flex; flex-direction:column; gap:6px; flex:1;}
+  .title{font-weight:600; font-size:14.5px; line-height:1.32; letter-spacing:0.1px;}
+  .meta{font-family:'JetBrains Mono'; font-size:10.5px; opacity:0.45; text-transform:uppercase; letter-spacing:0.4px;}
+  .specs{display:flex; flex-wrap:wrap; gap:5px; margin-top:3px;}
+  .spec-pill{
+    font-family:'JetBrains Mono'; font-size:9.5px; letter-spacing:0.3px;
+    padding:3px 7px; border-radius:5px; background:rgba(255,255,255,0.03);
+    border:1px solid var(--line); opacity:0.85;
+  }
+  .spec-pill.rating-M{color:var(--used); border-color:rgba(255,107,87,0.4);}
+  .spec-pill.rating-T{color:var(--tag); border-color:rgba(255,201,60,0.4);}
+  .spec-pill.rating-E{color:var(--xbx); border-color:rgba(63,174,63,0.4);}
+  .spec-pill.rating-E10p{color:var(--ps); border-color:rgba(46,124,246,0.4);}
+  .dev-line{font-size:11px; opacity:0.5;}
+  .price-row{
+    margin-top:auto; display:flex; align-items:center; justify-content:space-between;
+    padding-top:11px; border-top:1px dashed var(--line-soft);
+  }
+  .price{font-family:'JetBrains Mono'; font-weight:700; font-size:16px; letter-spacing:0.2px;}
+  .add-btn{
+    background:transparent; border:1px solid var(--paper); color:var(--paper);
+    width:30px; height:30px; border-radius:9px; font-size:16px; cursor:pointer;
+    line-height:1; transition:background .15s ease, color .15s ease, transform .1s ease;
+  }
+  .add-btn:hover{background:var(--paper); color:var(--ink); transform:scale(1.06);}
+  .add-btn:disabled{opacity:0.3; cursor:not-allowed;}
+  .card-soldout .cover{opacity:0.4;}
+  .card-soldout .title, .card-soldout .price{opacity:0.45;}
+  .soldout-stamp{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:3;
+    font-family:'Anton'; font-size:22px; letter-spacing:2px; color:var(--paper);
+    background:rgba(0,0,0,0.4); backdrop-filter:blur(1px);
+  }
+  .stock-hint{font-family:'JetBrains Mono'; font-size:10.5px; color:var(--tag); margin-top:2px;}
+  .wa-ask{
+    display:block; text-align:center; margin-top:9px; font-size:11.5px;
+    color:var(--xbx); text-decoration:none; font-weight:600;
+    padding:7px 0; border-radius:8px; background:rgba(63,174,63,0.08);
+    transition:background .15s ease;
+  }
+  .wa-ask:hover{background:rgba(63,174,63,0.16); text-decoration:none;}
+
+  /* ---------- how pricing works ---------- */
+  .price-explain{
+    background:linear-gradient(180deg, var(--shelf) 0%, var(--shelf-2) 100%);
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:30px; display:grid; grid-template-columns: repeat(3,1fr); gap:24px;
+    margin-top:10px; box-shadow:var(--shadow-sm);
+  }
+  .price-explain .p-item{font-family:'JetBrains Mono'; font-size:13px; opacity:0.75;}
+  .price-explain .p-item b{display:block; font-size:22px; font-family:'Space Grotesk'; font-weight:700; margin-bottom:5px; opacity:1;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line); padding:40px 32px; text-align:center;
+    font-family:'JetBrains Mono'; font-size:12px; opacity:0.4; letter-spacing:0.3px;
+  }
+
+  /* ---------- cart drawer ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.55); opacity:0; pointer-events:none;
+    transition:opacity .2s ease; z-index:90; backdrop-filter:blur(2px);
+  }
+  .overlay.open{opacity:1; pointer-events:auto;}
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:380px; max-width:92vw;
+    background:var(--shelf); border-left:1px solid var(--line);
+    transform:translateX(100%); transition:transform .28s cubic-bezier(.2,.8,.2,1); z-index:100;
+    display:flex; flex-direction:column;
+    box-shadow:-16px 0 48px rgba(0,0,0,0.4);
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{padding:22px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;}
+  .drawer-items{flex:1; overflow-y:auto; padding:16px 20px; display:flex; flex-direction:column; gap:14px;}
+  .drawer-item{display:flex; gap:12px; align-items:center; font-size:13px;}
+  .drawer-item .swatch{width:38px; height:48px; border-radius:7px; flex-shrink:0; box-shadow:var(--shadow-sm);}
+  .drawer-item .di-info{flex:1;}
+  .drawer-item .di-price{font-family:'JetBrains Mono'; font-weight:700;}
+  .drawer-item button{background:none; border:none; color:var(--used); cursor:pointer; font-size:16px; transition:transform .1s ease;}
+  .drawer-item button:hover{transform:scale(1.15);}
+  .drawer-foot{padding:20px; border-top:1px solid var(--line);}
+  .drawer-foot .total-row{display:flex; justify-content:space-between; font-family:'JetBrains Mono'; margin-bottom:14px; font-size:15px;}
+  .close-btn{background:none; border:none; color:var(--paper); font-size:20px; cursor:pointer; opacity:0.7; transition:opacity .15s ease;}
+  .close-btn:hover{opacity:1;}
+  .empty-note{opacity:0.45; font-size:13px; margin-top:20px;}
+
+  /* ---------- checkout modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.65); display:none;
+    align-items:center; justify-content:center; z-index:110; padding:20px;
+    backdrop-filter:blur(3px);
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--paper); color:var(--ink); border-radius:var(--radius);
+    width:100%; max-width:420px; padding:28px; max-height:88vh; overflow-y:auto;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  }
+  .modal h3{font-size:22px; margin-bottom:6px;}
+  .modal p.sub{font-size:13px; opacity:0.65; margin-bottom:18px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:12px; font-weight:700; margin-bottom:5px; font-family:'JetBrains Mono';}
+  .field input, .field select{
+    width:100%; padding:10px 12px; border-radius:9px; border:1px solid rgba(0,0,0,0.15);
+    font-family:'Space Grotesk'; font-size:14px; background:#fff;
+    transition:border-color .15s ease;
+  }
+  .field input:focus, .field select:focus{outline:none; border-color:var(--ps);}
+  .modal .submit-btn{
+    width:100%; background:var(--ink); color:var(--paper); border:none;
+    padding:14px; border-radius:999px; font-weight:700; cursor:pointer; margin-top:6px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+  }
+  .modal .submit-btn:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(0,0,0,0.3);}
+  .auth-tabs{display:flex; gap:6px; margin-bottom:18px; background:rgba(0,0,0,0.06); padding:4px; border-radius:999px;}
+  .auth-tab{
+    flex:1; text-align:center; padding:8px 0; border-radius:999px; font-size:12.5px;
+    font-weight:700; cursor:pointer; font-family:'JetBrains Mono'; letter-spacing:0.3px;
+  }
+  .auth-tab.active{background:var(--ink); color:var(--paper);}
+  .fee-box{
+    background:rgba(0,0,0,0.06); border:1px dashed rgba(0,0,0,0.25);
+    border-radius:10px; padding:14px; margin-bottom:16px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .fee-box .fee-label{font-size:13px; font-weight:600;}
+  .fee-box .fee-sub{font-size:11px; opacity:0.6; font-family:'JetBrains Mono';}
+  .fee-box .fee-amount{font-family:'JetBrains Mono'; font-weight:700; font-size:20px;}
+  .switch-line{text-align:center; font-size:12.5px; margin-top:14px; opacity:0.75;}
+  .switch-line a{font-weight:700; text-decoration:underline; cursor:pointer;}
+  .modal .cancel-link{display:block; text-align:center; margin-top:12px; font-size:12px; opacity:0.6; cursor:pointer;}
+  .confirm-box{text-align:center; padding:10px 0;}
+  .confirm-box .big-check{font-size:44px; margin-bottom:10px;}
+  .order-id{font-family:'JetBrains Mono'; background:rgba(0,0,0,0.06); padding:8px 12px; border-radius:8px; display:inline-block; margin:10px 0; font-size:13px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    #auth-area .ghost-btn, #auth-area .sell-btn{display:none;}
+    .menu-btn{display:block;}
+    .shelf-visual{height:200px;}
+    .price-explain{grid-template-columns:1fr;}
+    .topbar{padding:14px 18px;}
+    .logo .word{font-size:19px;}
+    .hero{padding:40px 20px 32px;}
+    .section{padding:40px 20px;}
+    .modal{padding:22px 18px;}
+  }
+
+  @media (max-width:480px){
+    .cart-btn span{display:none;}
+    .cart-btn{padding:9px 11px;}
+  }
+
+  .wa-float{
+    position:fixed; bottom:22px; right:22px; z-index:80;
+    width:54px; height:54px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    font-size:26px; text-decoration:none; box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    transition:transform .15s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6856034505274530"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="mark">R</div>
+    <div class="word">RESTOCK</div>
+  </div>
+  <div class="nav-links">
+    <a href="#catalog">Catalog</a>
+    <a href="#trust">How it works</a>
+    <a onclick="openTrack()" style="cursor:pointer;">Track order</a>
+    <a href="#footer">Contact</a>
+  </div>
+  <div class="topbar-right">
+    <div id="auth-area">
+      <button class="ghost-btn" onclick="openAuth('login')">Sign In</button>
+      <button class="sell-btn" onclick="openAuth('sell')">Sell your games</button>
+    </div>
+    <button class="menu-btn" onclick="toggleMobileNav()" id="menu-btn" aria-label="Menu">☰</button>
+    <button class="cart-btn" onclick="openCart()">🛒 <span>Cart ·</span> <span id="cart-count">0</span></button>
+  </div>
+</div>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#catalog" onclick="closeMobileNav()">Catalog</a>
+  <a href="#trust" onclick="closeMobileNav()">How it works</a>
+  <a onclick="openTrack(); closeMobileNav();">Track order</a>
+  <a href="#footer" onclick="closeMobileNav()">Contact</a>
+  <a onclick="openAuth('login'); closeMobileNav();">Sign In</a>
+  <a onclick="openAuth('sell'); closeMobileNav();">Sell your games</a>
+</div>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Physical &amp; digital · in stock now</div>
+      <h1 class="display">Shelf full of <span class="ps-word">PS5</span> / <span class="xbx-word">Xbox</span><br>games, priced fair.</h1>
+      <p>A small resale shop for PS5, PS4, and Xbox titles — new and pre-owned. Browse what's in stock and add it straight to your cart.</p>
+      <div class="hero-ctas">
+        <a href="#catalog" class="btn-primary">Browse the shelf</a>
+      </div>
+    </div>
+    <div class="shelf-visual">
+      <div class="spine-row" id="spine-row"></div>
+      <div class="shelf-board"></div>
+    </div>
+  </div>
+</section>
+
+<!-- restock -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6856034505274530"
+     data-ad-slot="3316471585"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<section class="section" id="catalog">
+  <div class="section-head">
+    <h2 class="display">The shelf</h2>
+    <span class="count" id="result-count"></span>
+  </div>
+  <div class="filter-row" id="cat-filters" style="margin-bottom:8px;"></div>
+  <div class="filter-row" id="filters"></div>
+  <div class="grid" id="product-grid"></div>
+</section>
+
+<section class="section" id="trust">
+  <div class="section-head"><h2 class="display">How it works</h2></div>
+  <div class="price-explain">
+    <div class="p-item"><b>1. Order &amp; pay</b>Add games to your cart, checkout, and send payment via Zong 5G or JS Bank. Upload a screenshot to speed up confirmation.</div>
+    <div class="p-item"><b>2. We confirm</b>We manually verify your payment and message you on WhatsApp or email to confirm your order.</div>
+    <div class="p-item"><b>3. Delivery</b>Games are shipped or hand-delivered depending on your city — typical delivery is 2–5 days. Every disc is tested before it ships.</div>
+  </div>
+  <div class="price-explain" style="margin-top:16px;">
+    <div class="p-item"><b>Condition guarantee</b>"New" means sealed. "Pre-owned" means tested and working — if a used disc doesn't run, tell us within 48 hours of delivery for a replacement or refund.</div>
+    <div class="p-item"><b>Contact us</b>WhatsApp <a href="https://wa.me/923346662359" style="color:var(--tag);">03346662359</a> for order questions, availability checks, or issues after delivery.</div>
+    <div class="p-item"><b>Returns</b>Wrong or faulty item? Message us within 48 hours with your order ID and we'll sort a replacement or refund.</div>
+  </div>
+</section>
+
+<footer id="footer">
+  RESTOCK — a small console game resale shop · orders confirmed by email · not affiliated with Sony or Microsoft<br>
+  Payments accepted via Zong 5G / JS Bank: 03346662359 · WhatsApp us for order help
+</footer>
+
+<a class="wa-float" href="https://wa.me/923346662359?text=Hi!%20I%20have%20a%20question%20about%20RESTOCK." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- cart drawer -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <strong class="display" style="font-size:18px;">Your cart</strong>
+    <button class="close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="drawer-items">
+    <div class="empty-note" id="empty-note">Cart's empty — go grab something off the shelf.</div>
+  </div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><span id="cart-total">Rs 0</span></div>
+    <button class="submit-btn" onclick="openCheckout()" id="checkout-open-btn" disabled>Checkout</button>
+  </div>
+</div>
+
+<!-- checkout modal -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-content">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<script>
+const PLATFORMS = {
+  ps5: {label:'PS5', a:'#2e7cf6', b:'#123a80'},
+  ps4: {label:'PS4', a:'#3f8ff0', b:'#0d2c66'},
+  xbox: {label:'XBOX', a:'#3fae3f', b:'#0d3d0d'}
+};
+
+// cost = what I pay buying the game on Daraz (PKR). markup = my profit margin (0.15 = 15%, 0.35 = 35%)
+const GAMES = [
+  {id:1, title:'God of War Ragnarök', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'mountains', genre:'Action-Adventure', dev:'Santa Monica Studio', year:2022, rating:'M'},
+  {id:2, title:"Marvel's Spider-Man 2", plat:'ps5', cond:'new', cost:1999, stock:4, scene:'city', genre:'Action-Adventure', dev:'Insomniac Games', year:2023, rating:'T'},
+  {id:3, title:'Horizon Forbidden West', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'mountains', genre:'Action RPG', dev:'Guerrilla Games', year:2022, rating:'T'},
+  {id:4, title:'Ratchet & Clank: Rift Apart', plat:'ps5', cond:'new', cost:1999, stock:4, scene:'orbit', genre:'Platformer', dev:'Insomniac Games', year:2021, rating:'E10+'},
+  {id:5, title:"Demon's Souls", plat:'ps5', cond:'new', cost:1999, stock:3, scene:'spires', genre:'Action RPG', dev:'Bluepoint Games', year:2020, rating:'M'},
+  {id:6, title:'Returnal', plat:'ps5', cond:'new', cost:1999, stock:3, scene:'orbit', genre:'Roguelike', dev:'Housemarque', year:2021, rating:'M'},
+  {id:7, title:'Ghost of Tsushima', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'mountains', genre:'Action-Adventure', dev:'Sucker Punch Productions', year:2020, rating:'M'},
+  {id:8, title:'The Last of Us Part I', plat:'ps5', cond:'new', cost:1999, stock:4, scene:'forest', genre:'Action-Adventure', dev:'Naughty Dog', year:2022, rating:'M'},
+  {id:9, title:'Gran Turismo 7', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'grid', genre:'Racing', dev:'Polyphony Digital', year:2022, rating:'E'},
+  {id:10, title:'Final Fantasy XVI', plat:'ps5', cond:'new', cost:1999, stock:3, scene:'spires', genre:'Action RPG', dev:'Square Enix', year:2023, rating:'M'},
+
+  {id:11, title:'The Last of Us Part II', plat:'ps4', cond:'new', cost:1299, stock:5, scene:'forest', genre:'Action-Adventure', dev:'Naughty Dog', year:2020, rating:'M'},
+  {id:12, title:'Bloodborne', plat:'ps4', cond:'new', cost:1299, stock:4, scene:'spires', genre:'Action RPG', dev:'FromSoftware', year:2015, rating:'M'},
+  {id:13, title:"Uncharted 4: A Thief's End", plat:'ps4', cond:'new', cost:1299, stock:5, scene:'city', genre:'Action-Adventure', dev:'Naughty Dog', year:2016, rating:'T'},
+  {id:14, title:'God of War (2018)', plat:'ps4', cond:'new', cost:1299, stock:5, scene:'mountains', genre:'Action-Adventure', dev:'Santa Monica Studio', year:2018, rating:'M'},
+  {id:15, title:'Persona 5 Royal', plat:'ps4', cond:'new', cost:1299, stock:4, scene:'city', genre:'RPG', dev:'Atlus', year:2020, rating:'M'},
+  {id:16, title:'Days Gone', plat:'ps4', cond:'new', cost:1299, stock:4, scene:'forest', genre:'Action-Adventure', dev:'Bend Studio', year:2019, rating:'M'},
+  {id:17, title:'Detroit: Become Human', plat:'ps4', cond:'new', cost:1299, stock:4, scene:'city', genre:'Interactive Drama', dev:'Quantic Dream', year:2018, rating:'M'},
+  {id:18, title:"Marvel's Spider-Man", plat:'ps4', cond:'new', cost:1299, stock:5, scene:'city', genre:'Action-Adventure', dev:'Insomniac Games', year:2018, rating:'T'},
+  {id:19, title:'Grand Theft Auto V', plat:'ps4', cond:'new', cost:1299, stock:6, scene:'city', genre:'Open World', dev:'Rockstar North', year:2013, rating:'M'},
+  {id:20, title:'Red Dead Redemption 2', plat:'ps4', cond:'new', cost:1299, stock:5, scene:'mountains', genre:'Open World', dev:'Rockstar Games', year:2018, rating:'M'},
+
+  {id:21, title:'Halo Infinite', plat:'xbox', cond:'new', cost:1999, stock:5, scene:'orbit', genre:'FPS', dev:'343 Industries', year:2021, rating:'T'},
+  {id:22, title:'Forza Horizon 5', plat:'xbox', cond:'new', cost:1999, stock:5, scene:'grid', genre:'Racing', dev:'Playground Games', year:2021, rating:'E'},
+  {id:23, title:'Gears 5', plat:'xbox', cond:'new', cost:1999, stock:4, scene:'rift', genre:'Third-Person Shooter', dev:'The Coalition', year:2019, rating:'M'},
+  {id:24, title:'Sea of Thieves', plat:'xbox', cond:'new', cost:1999, stock:4, scene:'orbit', genre:'Adventure', dev:'Rare', year:2018, rating:'T'},
+  {id:25, title:'Ori and the Will of the Wisps', plat:'xbox', cond:'new', cost:1999, stock:3, scene:'forest', genre:'Platformer', dev:'Moon Studios', year:2020, rating:'E10+'},
+  {id:26, title:'Microsoft Flight Simulator', plat:'xbox', cond:'new', cost:1999, stock:3, scene:'grid', genre:'Simulation', dev:'Asobo Studio', year:2020, rating:'E'},
+  {id:27, title:'Starfield', plat:'xbox', cond:'new', cost:1999, stock:4, scene:'orbit', genre:'Action RPG', dev:'Bethesda Game Studios', year:2023, rating:'M'},
+  {id:28, title:'Gears of War 4', plat:'xbox', cond:'new', cost:1999, stock:4, scene:'rift', genre:'Third-Person Shooter', dev:'The Coalition', year:2016, rating:'M'},
+  {id:29, title:'Fallout 4', plat:'xbox', cond:'new', cost:1999, stock:5, scene:'mountains', genre:'Action RPG', dev:'Bethesda Game Studios', year:2015, rating:'M'},
+  {id:30, title:'Sekiro: Shadows Die Twice', plat:'xbox', cond:'new', cost:1999, stock:3, scene:'forest', genre:'Action-Adventure', dev:'FromSoftware', year:2019, rating:'M'},
+
+  {id:31, title:'Elden Ring', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'spires', genre:'Action RPG', dev:'FromSoftware', year:2022, rating:'M'},
+  {id:32, title:'Call of Duty: Modern Warfare III', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'grid', genre:'FPS', dev:'Sledgehammer Games', year:2023, rating:'M'},
+  {id:33, title:'Minecraft', plat:'xbox', cond:'new', cost:1999, stock:6, scene:'grid', genre:'Sandbox', dev:'Mojang Studios', year:2011, rating:'E10+'},
+  {id:34, title:'Cyberpunk 2077', plat:'ps5', cond:'new', cost:1999, stock:5, scene:'city', genre:'Action RPG', dev:'CD Projekt Red', year:2020, rating:'M'},
+  {id:35, title:"Baldur's Gate 3", plat:'ps5', cond:'new', cost:1999, stock:4, scene:'spires', genre:'RPG', dev:'Larian Studios', year:2023, rating:'M'},
+  {id:36, title:'Hogwarts Legacy', plat:'ps4', cond:'new', cost:1299, stock:5, scene:'spires', genre:'Action RPG', dev:'Avalanche Software', year:2023, rating:'T'},
+  {id:37, title:'Resident Evil 4', plat:'xbox', cond:'new', cost:1999, stock:4, scene:'forest', genre:'Survival Horror', dev:'Capcom', year:2023, rating:'M'},
+  {id:38, title:'EA Sports FC 24', plat:'ps4', cond:'new', cost:1299, stock:5, scene:'city', genre:'Sports', dev:'EA Vancouver', year:2023, rating:'E'},
+  {id:39, title:'The Elder Scrolls V: Skyrim', plat:'ps4', cond:'new', cost:1299, stock:5, scene:'mountains', genre:'RPG', dev:'Bethesda Game Studios', year:2011, rating:'M'},
+  {id:40, title:'Dark Souls III', plat:'ps4', cond:'new', cost:1299, stock:4, scene:'spires', genre:'Action RPG', dev:'FromSoftware', year:2016, rating:'M'},
+
+  {id:41, title:"Assassin's Creed Valhalla", plat:'ps5', cond:'new', cost:1999, stock:4, scene:'mountains', genre:'Action RPG', dev:'Ubisoft', year:2020, rating:'M'},
+  {id:42, title:'Far Cry 6', plat:'ps4', cond:'new', cost:1299, stock:4, scene:'forest', genre:'FPS', dev:'Ubisoft', year:2021, rating:'M'},
+  {id:43, title:'Tekken 8', plat:'ps5', cond:'new', cost:1999, stock:4, scene:'grid', genre:'Fighting', dev:'Bandai Namco', year:2024, rating:'T'},
+  {id:44, title:'Street Fighter 6', plat:'xbox', cond:'new', cost:1999, stock:4, scene:'grid', genre:'Fighting', dev:'Capcom', year:2023, rating:'T'},
+  {id:45, title:'Mortal Kombat 1', plat:'ps5', cond:'new', cost:1999, stock:3, scene:'rift', genre:'Fighting', dev:'NetherRealm Studios', year:2023, rating:'M'},
+  {id:46, title:'NBA 2K24', plat:'xbox', cond:'new', cost:1999, stock:5, scene:'city', genre:'Sports', dev:'Visual Concepts', year:2023, rating:'E'}
+];
+
+// sale price = cost + flat Rs 3,000 markup, based on real PK market pricing research
+const FLAT_MARKUP = 3000;
+GAMES.forEach(g => { g.type = 'game'; g.price = g.cost + FLAT_MARKUP; });
+
+// controllers — cost = what I pay buying the controller (PKR), based on PK market research
+const ACCESSORIES = [
+  {id:201, title:'DualSense Wireless Controller', plat:'ps5', type:'controller', connection:'wireless', cost:22000, stock:6, scene:'controller'},
+  {id:202, title:'PS5 Wired Controller', plat:'ps5', type:'controller', connection:'wired', cost:3500, stock:8, scene:'controller'},
+  {id:203, title:'DualShock 4 Wireless Controller', plat:'ps4', type:'controller', connection:'wireless', cost:8000, stock:6, scene:'controller'},
+  {id:204, title:'PS4 Wired Controller', plat:'ps4', type:'controller', connection:'wired', cost:2500, stock:8, scene:'controller'},
+  {id:205, title:'Xbox Wireless Controller', plat:'xbox', type:'controller', connection:'wireless', cost:9000, stock:6, scene:'controller'},
+  {id:206, title:'Xbox Wired Controller', plat:'xbox', type:'controller', connection:'wired', cost:3000, stock:8, scene:'controller'}
+];
+ACCESSORIES.forEach(a => { a.price = a.cost + FLAT_MARKUP; });
+
+// consoles — cost = what I pay buying the console (PKR), based on real PK market pricing research; flat Rs 40,000 profit
+const CONSOLE_MARKUP = 40000;
+const CONSOLES = [
+  {id:301, title:'PS5 Pro', plat:'ps5', type:'console', cost:240000, stock:2, scene:'console'},
+  {id:302, title:'PS5 Slim (Disc Edition)', plat:'ps5', type:'console', cost:190000, stock:3, scene:'console'},
+  {id:303, title:'PS5 Digital Edition', plat:'ps5', type:'console', cost:170000, stock:3, scene:'console'},
+  {id:304, title:'PS4', plat:'ps4', type:'console', cost:40000, stock:4, scene:'console'},
+  {id:305, title:'Xbox Series S', plat:'xbox', type:'console', cost:150000, stock:3, scene:'console'},
+  {id:306, title:'Xbox Series X', plat:'xbox', type:'console', cost:230000, stock:2, scene:'console'},
+  {id:307, title:'Xbox 360', plat:'xbox', type:'console', cost:20000, stock:3, scene:'console'}
+];
+CONSOLES.forEach(c => { c.price = c.cost + CONSOLE_MARKUP; });
+
+const PRODUCTS = GAMES.concat(ACCESSORIES, CONSOLES);
+
+const SELLER_WHATSAPP = '923346662359'; // same as the Zong 5G payment number, international format for wa.me links
+
+function fmtPKR(n){ return 'Rs ' + n.toLocaleString('en-PK'); }
+
+// deterministic pseudo-random from an id, so each card's art is stable across re-renders
+function seeded(id, salt){
+  const x = Math.sin(id*999 + salt*37.13) * 10000;
+  return x - Math.floor(x);
+}
+
+// procedural illustrated cover art, unique per game, no external images/IP
+function coverArt(g){
+  const p = PLATFORMS[g.plat];
+  const id = g.id;
+  const light = '#ffffff';
+  let shapes = '';
+
+  if(g.scene === 'mountains'){
+    const r1 = 60 + seeded(id,1)*30, r2 = 90 + seeded(id,2)*25;
+    shapes = `
+      <circle cx="120" cy="70" r="26" fill="${light}" opacity="0.85"/>
+      <polygon points="0,190 ${r1},80 130,190" fill="rgba(255,255,255,0.22)"/>
+      <polygon points="70,190 ${r2+40},50 240,190" fill="rgba(255,255,255,0.38)"/>
+      <polygon points="150,190 230,${100-seeded(id,3)*30} 300,190" fill="rgba(255,255,255,0.16)"/>`;
+  } else if(g.scene === 'city'){
+    let bars = '';
+    for(let i=0;i<9;i++){
+      const h = 40 + seeded(id,i+1)*130;
+      bars += `<rect x="${i*24+4}" y="${190-h}" width="16" height="${h}" fill="rgba(255,255,255,${0.18+ (i%3)*0.12})"/>`;
+    }
+    shapes = bars + `<circle cx="35" cy="40" r="14" fill="${light}" opacity="0.7"/>`;
+  } else if(g.scene === 'spires'){
+    let tri = '';
+    for(let i=0;i<5;i++){
+      const h = 60 + seeded(id,i+2)*100;
+      const x = i*46 + 10;
+      tri += `<polygon points="${x},190 ${x+16},${190-h} ${x+32},190" fill="rgba(255,255,255,${0.2+(i%2)*0.2})"/>`;
+    }
+    shapes = tri;
+  } else if(g.scene === 'forest'){
+    let tri = '';
+    for(let i=0;i<7;i++){
+      const h = 50 + seeded(id,i+3)*90;
+      const x = i*32 + 6;
+      tri += `<polygon points="${x+12},${190-h} ${x},190 ${x+24},190" fill="rgba(255,255,255,${0.2+(i%3)*0.15})"/>`;
+    }
+    shapes = `<circle cx="220" cy="45" r="20" fill="${light}" opacity="0.55"/>` + tri;
+  } else if(g.scene === 'grid'){
+    let lines = '';
+    for(let i=1;i<8;i++){
+      lines += `<line x1="0" y1="${i*24}" x2="300" y2="${i*24}" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>`;
+      lines += `<line x1="${i*38}" y1="0" x2="${i*38}" y2="200" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>`;
+    }
+    shapes = lines + `<circle cx="150" cy="100" r="${34+seeded(id,4)*20}" fill="none" stroke="${light}" stroke-width="3" opacity="0.75"/>`;
+  } else if(g.scene === 'rift'){
+    shapes = `
+      <path d="M0,100 Q75,${40+seeded(id,5)*40} 150,100 T300,100" stroke="${light}" stroke-width="4" fill="none" opacity="0.6"/>
+      <path d="M0,130 Q75,${170-seeded(id,6)*40} 150,130 T300,130" stroke="${light}" stroke-width="3" fill="none" opacity="0.4"/>
+      <circle cx="150" cy="100" r="10" fill="${light}" opacity="0.9"/>`;
+  } else if(g.scene === 'console'){
+    shapes = `
+      <rect x="55" y="70" width="190" height="70" rx="14" fill="rgba(255,255,255,0.28)"/>
+      <rect x="55" y="70" width="190" height="70" rx="14" fill="none" stroke="${light}" stroke-width="2" opacity="0.5"/>
+      <circle cx="220" cy="105" r="7" fill="${light}" opacity="0.9"/>
+      <line x1="75" y1="90" x2="75" y2="120" stroke="${light}" stroke-width="3" opacity="0.6"/>
+      <line x1="85" y1="90" x2="85" y2="120" stroke="${light}" stroke-width="3" opacity="0.5"/>
+      <line x1="95" y1="90" x2="95" y2="120" stroke="${light}" stroke-width="3" opacity="0.4"/>
+      <rect x="120" y="88" width="60" height="34" rx="6" fill="rgba(255,255,255,0.18)"/>
+      <line x1="130" y1="98" x2="170" y2="98" stroke="${light}" stroke-width="2" opacity="0.5"/>
+      <line x1="130" y1="106" x2="170" y2="106" stroke="${light}" stroke-width="2" opacity="0.4"/>
+      <line x1="130" y1="114" x2="160" y2="114" stroke="${light}" stroke-width="2" opacity="0.3"/>
+    `;
+  } else if(g.scene === 'controller'){
+    shapes = `
+      <ellipse cx="150" cy="115" rx="115" ry="52" fill="rgba(255,255,255,0.14)"/>
+      <path d="M60,90 Q40,90 34,120 Q28,155 55,160 Q80,163 90,135 L210,135 Q220,163 245,160 Q272,155 266,120 Q260,90 240,90 Z" fill="rgba(255,255,255,0.32)"/>
+      <circle cx="95" cy="112" r="16" fill="none" stroke="${light}" stroke-width="3" opacity="0.8"/>
+      <line x1="95" y1="102" x2="95" y2="122" stroke="${light}" stroke-width="3" opacity="0.8"/>
+      <line x1="85" y1="112" x2="105" y2="112" stroke="${light}" stroke-width="3" opacity="0.8"/>
+      <circle cx="205" cy="105" r="6" fill="${light}" opacity="0.85"/>
+      <circle cx="222" cy="112" r="6" fill="${light}" opacity="0.6"/>
+      <circle cx="205" cy="119" r="6" fill="${light}" opacity="0.6"/>
+      <circle cx="188" cy="112" r="6" fill="${light}" opacity="0.6"/>
+      ${g.connection === 'wireless'
+        ? `<path d="M140,60 Q150,45 160,60" stroke="${light}" stroke-width="3" fill="none" opacity="0.7"/><path d="M133,68 Q150,42 167,68" stroke="${light}" stroke-width="2.5" fill="none" opacity="0.5"/>`
+        : `<line x1="150" y1="135" x2="150" y2="185" stroke="${light}" stroke-width="4" opacity="0.7"/><circle cx="150" cy="188" r="5" fill="${light}" opacity="0.8"/>`}
+    `;
+  } else { // orbit
+    shapes = `
+      <circle cx="150" cy="100" r="70" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      <circle cx="150" cy="100" r="44" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+      <circle cx="150" cy="100" r="20" fill="${light}" opacity="0.85"/>
+      <circle cx="${150+70*Math.cos(seeded(id,7)*6.28)}" cy="${100+70*Math.sin(seeded(id,7)*6.28)}" r="7" fill="${light}"/>`;
+  }
+
+  return `
+    <svg viewBox="0 0 300 200" preserveAspectRatio="none" style="width:100%; height:100%; display:block;">
+      <defs>
+        <linearGradient id="bg${id}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="${p.a}"/>
+          <stop offset="1" stop-color="${p.b}"/>
+        </linearGradient>
+      </defs>
+      <rect width="300" height="200" fill="url(#bg${id})"/>
+      ${shapes}
+      <rect width="300" height="200" fill="rgba(0,0,0,0.06)"/>
+    </svg>`;
+}
+
+let activeFilter = 'all';
+let activeCategory = 'all';
+let cart = [];
+
+function toggleMobileNav(){
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+
+function renderSpines(){
+  const row = document.getElementById('spine-row');
+  const hues = ['#2e7cf6','#3fae3f','#ffc93c','#ff6b57','#8a6cf2','#2e7cf6','#3fae3f','#ffc93c'];
+  row.innerHTML = hues.map((c,i)=>`<div class="spine" style="height:${180+ (i%4)*30}px; background:${c};"><span>${['PS5','XBOX','PS4','PS5','XBOX','PS4','PS5','XBOX'][i]}</span></div>`).join('');
+}
+
+function renderFilters(){
+  const filters = ['all','ps5','ps4','xbox'];
+  const labels = {all:'All platforms', ps5:'PS5', ps4:'PS4', xbox:'Xbox'};
+  document.getElementById('filters').innerHTML = filters.map(f =>
+    `<button class="chip ${f===activeFilter?'active':''}" onclick="setFilter('${f}')">${labels[f]}</button>`
+  ).join('');
+
+  const cats = ['all','game','controller','console'];
+  const catLabels = {all:'Everything', game:'🎮 Games', controller:'🕹️ Controllers', console:'📺 Consoles'};
+  document.getElementById('cat-filters').innerHTML = cats.map(c =>
+    `<button class="chip ${c===activeCategory?'active':''}" onclick="setCategory('${c}')">${catLabels[c]}</button>`
+  ).join('');
+}
+
+function setCategory(c){ activeCategory = c; renderFilters(); renderGrid(); }
+
+function setFilter(f){ activeFilter = f; renderFilters(); renderGrid(); }
+
+function renderGrid(){
+  const list = PRODUCTS.filter(g =>
+    (activeFilter==='all' || g.plat===activeFilter) &&
+    (activeCategory==='all' || g.type===activeCategory)
+  );
+  document.getElementById('result-count').textContent = list.length + ' item' + (list.length===1?'':'s');
+  document.getElementById('product-grid').innerHTML = list.map(g => {
+    const p = PLATFORMS[g.plat];
+    const price = fmtPKR(g.price);
+    const soldOut = g.stock <= 0;
+    const waMsg = encodeURIComponent(`Hi! I'm asking about ${g.title} (${p.label}) listed on RESTOCK for ${price}. Is it available?`);
+    const isController = g.type === 'controller';
+    const isConsole = g.type === 'console';
+    return `
+    <div class="card ${soldOut ? 'card-soldout' : ''}">
+      <div class="cover">
+        ${coverArt(g)}
+        <span class="plat-badge">${p.label}</span>
+        <span class="cond-badge cond-new">AVAILABLE</span>
+        <span class="tag-corner">${price}</span>
+        ${soldOut ? `<span class="soldout-stamp">SOLD OUT</span>` : ''}
+      </div>
+      <div class="info">
+        <div class="title">${g.title}</div>
+        <div class="meta">${p.label} · ${isController ? (g.connection==='wireless'?'Wireless':'Wired') : isConsole ? 'Console' : (g.cond==='new'?'Sealed':'Tested &amp; working')}</div>
+        <div class="specs">
+          ${isController
+            ? `<span class="spec-pill">${g.connection==='wireless'?'📶 Wireless':'🔌 Wired'}</span><span class="spec-pill">Controller</span>`
+            : isConsole
+            ? `<span class="spec-pill">Console</span><span class="spec-pill">Brand new</span>`
+            : `<span class="spec-pill">${g.genre}</span><span class="spec-pill">${g.year}</span><span class="spec-pill rating-${g.rating.replace('+','p')}">${g.rating}</span>`}
+        </div>
+        ${!isController && !isConsole ? `<div class="dev-line">${g.dev}</div>` : ''}
+        ${!soldOut && g.stock <= 1 ? `<div class="stock-hint">Only ${g.stock} left</div>` : ''}
+        <div class="price-row">
+          <span class="price">${price}</span>
+          ${soldOut
+            ? `<button class="add-btn" disabled>—</button>`
+            : `<button class="add-btn" onclick="addToCart(${g.id})">+</button>`}
+        </div>
+        <a class="wa-ask" href="https://wa.me/${SELLER_WHATSAPP}?text=${waMsg}" target="_blank" rel="noopener">💬 Ask on WhatsApp</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function addToCart(id){
+  const g = PRODUCTS.find(x=>x.id===id);
+  if(g.stock <= 0) return;
+  cart.push(g);
+  renderCart();
+  openCart();
+}
+
+function removeFromCart(idx){
+  cart.splice(idx,1);
+  renderCart();
+}
+
+function renderCart(){
+  document.getElementById('cart-count').textContent = cart.length;
+  const itemsEl = document.getElementById('drawer-items');
+  const totalEl = document.getElementById('cart-total');
+  const btn = document.getElementById('checkout-open-btn');
+  if(cart.length===0){
+    itemsEl.innerHTML = `<div class="empty-note">Cart's empty — go grab something off the shelf.</div>`;
+    btn.disabled = true;
+  } else {
+    itemsEl.innerHTML = cart.map((g,idx)=>{
+      const p = PLATFORMS[g.plat];
+      const price = fmtPKR(g.price);
+      return `<div class="drawer-item">
+        <div class="swatch" style="background:${p.a};"></div>
+        <div class="di-info"><div>${g.title}</div><div class="meta" style="opacity:.5;">${p.label}</div></div>
+        <div class="di-price">${price}</div>
+        <button onclick="removeFromCart(${idx})">✕</button>
+      </div>`;
+    }).join('');
+    btn.disabled = false;
+  }
+  const total = cart.reduce((s,g)=>s+g.price,0);
+  totalEl.textContent = fmtPKR(total);
+}
+
+function openCart(){ document.getElementById('drawer').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeCart(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+
+function openCheckout(){
+  const total = cart.reduce((s,g)=>s+g.price,0);
+  document.getElementById('modal-content').innerHTML = `
+    <h3 class="display">Checkout</h3>
+    <p class="sub">${cart.length} item(s) · Total ${fmtPKR(total)}</p>
+    <div class="field"><label>Full name</label><input type="text" id="f-name" placeholder="Jane Doe"></div>
+    <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="jane@email.com"></div>
+    <div class="field"><label>Shipping address</label><input type="text" id="f-address" placeholder="Street, City, Country"></div>
+    <div class="field"><label>Payment method</label>
+      <select id="f-pay" onchange="togglePayBox()">
+        <option value="zong">Zong 5G mobile wallet</option>
+        <option value="jsbank">JS Bank transfer</option>
+      </select>
+    </div>
+    <div class="fee-box" id="zong-box">
+      <div><div class="fee-label">Send payment to Zong 5G</div><div class="fee-sub">03346662359 · then place your order</div></div>
+    </div>
+    <div class="fee-box" id="jsbank-box" style="display:none;">
+      <div><div class="fee-label">Send payment to JS Bank</div><div class="fee-sub">Account: 03346662359 · then place your order</div></div>
+    </div>
+    <div class="field" id="proof-field">
+      <label>Payment screenshot</label>
+      <div class="fee-sub" style="margin-top:-4px;">You'll be able to send this on WhatsApp right after placing your order.</div>
+    </div>
+    <button class="submit-btn" onclick="submitOrder()">Place order</button>
+    <span class="cancel-link" onclick="closeModal()">Cancel</span>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+  togglePayBox();
+}
+
+function togglePayBox(){
+  const val = document.getElementById('f-pay').value;
+  document.getElementById('zong-box').style.display = (val === 'zong') ? 'flex' : 'none';
+  document.getElementById('jsbank-box').style.display = (val === 'jsbank') ? 'flex' : 'none';
+  document.getElementById('proof-field').style.display = 'block';
+}
+
+// Replace this with YOUR OWN Formspree endpoint (see setup steps) so real orders reach your inbox.
+const ORDER_ENDPOINT = 'https://formspree.io/f/xwlendqe';
+
+async function submitOrder(){
+  const name = document.getElementById('f-name').value || 'Guest';
+  const email = document.getElementById('f-email').value || 'not provided';
+  const address = document.getElementById('f-address').value || 'not provided';
+  const payMethod = document.getElementById('f-pay').value;
+  const orderId = 'RS-' + Math.floor(100000 + Math.random()*900000);
+  const total = cart.reduce((s,g)=>s+g.price,0);
+  const itemsList = cart.map(g => `${g.title} (${PLATFORMS[g.plat].label}) — ${fmtPKR(g.price)}`).join('\n');
+
+  const payLabel = {zong:'Zong 5G mobile wallet', jsbank:'JS Bank transfer'}[payMethod] || payMethod;
+
+  const formData = new FormData();
+  formData.append('orderId', orderId);
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('address', address);
+  formData.append('payMethod', payLabel);
+  formData.append('total', fmtPKR(total));
+  formData.append('items', itemsList);
+  formData.append('_subject', `New RESTOCK order ${orderId} — ${fmtPKR(total)}`);
+
+  let sent = false;
+  try{
+    const res = await fetch(ORDER_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    });
+    sent = res.ok;
+  }catch(e){
+    sent = false;
+  }
+
+  if(sent){
+    // reduce stock for what was actually ordered, and remember this order for this browser session
+    cart.forEach(g => { const ref = PRODUCTS.find(x=>x.id===g.id); if(ref && ref.stock>0) ref.stock -= 1; });
+    myOrders.push({ orderId, items: itemsList, total: fmtPKR(total), status: 'Pending confirmation' });
+    renderGrid();
+  }
+
+  const waMsg = encodeURIComponent(`Hi! Here's my payment screenshot for order ${orderId} (${fmtPKR(total)} via ${payLabel}).`);
+  const waLink = `https://wa.me/${SELLER_WHATSAPP}?text=${waMsg}`;
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="confirm-box">
+      <div class="big-check">${sent ? '✅' : '⚠️'}</div>
+      <h3 class="display">${sent ? 'Order placed' : 'Order not sent'}</h3>
+      <p class="sub">${sent
+        ? `Thanks, ${name} — your order was sent to us. Last step: send your payment screenshot on WhatsApp so we can confirm it fast.`
+        : `This order was NOT delivered — check that ORDER_ENDPOINT is a confirmed Formspree form, and that you're testing on a live https:// deployment, not a local file.`}</p>
+      <div class="order-id">${orderId}</div>
+      ${sent ? `<a href="${waLink}" target="_blank" class="submit-btn" style="display:block; text-decoration:none; text-align:center; margin-bottom:10px;">📲 Send payment screenshot on WhatsApp</a>` : ''}
+      <button class="submit-btn" onclick="finishOrder()">Done</button>
+    </div>
+  `;
+}
+
+function finishOrder(){
+  cart = [];
+  renderCart();
+  closeModal();
+  closeCart();
+}
+
+function closeModal(){ document.getElementById('modal-overlay').classList.remove('open'); }
+
+/* ---------------- order tracking (session-only — see note in chat) ---------------- */
+let myOrders = [];
+
+function openTrack(){
+  document.getElementById('modal-content').innerHTML = `
+    <h3 class="display">Track your order</h3>
+    <p class="sub">Enter the order ID you got at checkout (e.g. RS-482913).</p>
+    <div class="field"><label>Order ID</label><input type="text" id="trk-id" placeholder="RS-XXXXXX"></div>
+    <button class="submit-btn" onclick="checkOrder()">Check status</button>
+    <span class="cancel-link" onclick="closeModal()">Close</span>
+  `;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function checkOrder(){
+  const id = (document.getElementById('trk-id').value || '').trim().toUpperCase();
+  const found = myOrders.find(o => o.orderId.toUpperCase() === id);
+  const waMsg = encodeURIComponent(`Hi! Can you check the status of my order ${id || '(order ID)'} on RESTOCK?`);
+  if(found){
+    document.getElementById('modal-content').innerHTML = `
+      <h3 class="display">${found.orderId}</h3>
+      <div class="fee-box"><div><div class="fee-label">Status</div><div class="fee-sub">${found.status}</div></div></div>
+      <p class="sub" style="white-space:pre-line;">${found.items}</p>
+      <p class="sub"><b>Total: ${found.total}</b></p>
+      <a class="submit-btn" style="display:block; text-align:center; text-decoration:none;" href="https://wa.me/${SELLER_WHATSAPP}?text=${waMsg}" target="_blank" rel="noopener">Message us for an update</a>
+      <span class="cancel-link" onclick="closeModal()">Close</span>
+    `;
+  } else {
+    document.getElementById('modal-content').innerHTML = `
+      <h3 class="display">Not found here</h3>
+      <p class="sub">We can only look up orders placed earlier in this same browser session. For any other order, message us directly with your order ID and we'll check it manually.</p>
+      <a class="submit-btn" style="display:block; text-align:center; text-decoration:none;" href="https://wa.me/${SELLER_WHATSAPP}?text=${waMsg}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+      <span class="cancel-link" onclick="closeModal()">Close</span>
+    `;
+  }
+}
+
+/* ---------------- auth (demo only — in-memory, no real backend) ---------------- */
+let currentUser = null; // { name, email, isSeller }
+
+function renderAuthArea(){
+  const area = document.getElementById('auth-area');
+  if(!currentUser){
+    area.innerHTML = `
+      <button class="ghost-btn" onclick="openAuth('login')">Sign In</button>
+      <button class="sell-btn" onclick="openAuth('sell')">Sell your games</button>`;
+    return;
+  }
+  const initial = currentUser.name.charAt(0).toUpperCase();
+  area.innerHTML = `
+    <div class="account-chip" onclick="openAuth('account')">
+      <div class="avatar">${initial}</div>
+      <span>${currentUser.name}${currentUser.isSeller ? '<span class="seller-badge">SELLER</span>' : ''}</span>
+    </div>`;
+}
+
+function openAuth(mode){
+  document.getElementById('modal-content').innerHTML = authMarkup(mode);
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function authMarkup(mode){
+  if(mode === 'account' && currentUser){
+    return `
+      <h3 class="display">My account</h3>
+      <p class="sub">${currentUser.email}</p>
+      ${currentUser.isSeller
+        ? `<div class="fee-box"><div><div class="fee-label">Seller account active</div><div class="fee-sub">You can list games for sale</div></div><span class="seller-badge">SELLER</span></div>
+           <button class="submit-btn" onclick="openAuth('listgame')" style="margin-bottom:10px;">+ List a game</button>
+           ${myListings.length ? `<div class="switch-line" style="text-align:left; margin-top:2px;">
+             <b>Your submitted listings:</b><br>
+             ${myListings.map(l => `${l.title} (${l.plat.toUpperCase()}) — ${fmtPKR(l.price)} · <i>${l.status}</i>`).join('<br>')}
+           </div>` : `<p class="sub">No listings submitted yet.</p>`}`
+        : `<div class="fee-box"><div><div class="fee-label">Buyer account</div><div class="fee-sub">Want to list your own games?</div></div></div>
+           <button class="submit-btn" onclick="openAuth('sell')" style="margin-bottom:10px;">Become a seller — Rs 3,999</button>`
+      }
+      <button class="submit-btn" style="background:transparent; color:var(--ink); border:1px solid rgba(0,0,0,0.2); margin-top:10px;" onclick="logOut()">Log out</button>
+      <span class="cancel-link" onclick="closeModal()">Close</span>
+    `;
+  }
+
+  if(mode === 'listgame'){
+    return `
+      <h3 class="display">List a game</h3>
+      <p class="sub">Submit a game for review — we'll add it to the shelf once approved.</p>
+      <div class="field"><label>Game title</label><input type="text" id="lg-title" placeholder="e.g. FIFA 24"></div>
+      <div class="field"><label>Platform</label>
+        <select id="lg-plat"><option value="ps5">PS5</option><option value="ps4">PS4</option><option value="xbox">Xbox</option></select>
+      </div>
+      <div class="field"><label>Condition</label>
+        <select id="lg-cond"><option value="new">New / Sealed</option><option value="used">Pre-owned</option></select>
+      </div>
+      <div class="field"><label>Asking price (PKR)</label><input type="number" id="lg-price" placeholder="5000"></div>
+      <div class="field"><label>Photo</label><input type="file" id="lg-photo" accept="image/*"></div>
+      <button class="submit-btn" onclick="submitListing()">Submit for review</button>
+      <span class="cancel-link" onclick="openAuth('account')">Back</span>
+    `;
+  }
+
+  if(mode === 'signup'){
+    return `
+      <div class="auth-tabs">
+        <div class="auth-tab" onclick="openAuth('login')">Sign In</div>
+        <div class="auth-tab active">Create Account</div>
+      </div>
+      <h3 class="display">Create your account</h3>
+      <p class="sub">Free — for buying games on RESTOCK.</p>
+      <div class="field"><label>Full name</label><input type="text" id="su-name" placeholder="Jane Doe"></div>
+      <div class="field"><label>Email</label><input type="email" id="su-email" placeholder="jane@email.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="su-pass" placeholder="••••••••"></div>
+      <button class="submit-btn" onclick="doSignup()">Create account</button>
+      <div class="switch-line">Want to sell games instead? <a onclick="openAuth('sell')">Register as a seller</a></div>
+    `;
+  }
+
+  if(mode === 'sell'){
+    return `
+      <h3 class="display">Become a seller</h3>
+      <p class="sub">List and sell your own PS5, PS4, and Xbox games on RESTOCK.</p>
+      <div class="fee-box">
+        <div><div class="fee-label">One-time registration fee</div><div class="fee-sub">Unlocks your seller dashboard</div></div>
+        <div class="fee-amount">Rs 3,999</div>
+      </div>
+      <div class="fee-box">
+        <div><div class="fee-label">Send the fee to Zong 5G</div><div class="fee-sub">03346662359</div></div>
+      </div>
+      <div class="fee-box">
+        <div><div class="fee-label">Or JS Bank</div><div class="fee-sub">Account: 03346662359</div></div>
+      </div>
+      <div class="field"><label>Full name / store name</label><input type="text" id="sl-name" placeholder="e.g. Ali's Game Corner"></div>
+      <div class="field"><label>Email</label><input type="email" id="sl-email" placeholder="you@email.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="sl-pass" placeholder="••••••••"></div>
+      <div class="field"><label>Payment method for the fee</label>
+        <select id="sl-pay">
+          <option>Zong 5G mobile wallet</option>
+          <option>JS Bank transfer</option>
+          <option>JazzCash / Easypaisa</option>
+        </select>
+      </div>
+      <div class="field"><label>Payment screenshot <span style="opacity:0.5; font-weight:400;">(optional)</span></label>
+        <input type="file" id="sl-proof" accept="image/*">
+      </div>
+      <button class="submit-btn" onclick="doSellerSignup()">Pay Rs 3,999 &amp; create seller account</button>
+      <div class="switch-line">Just want to buy? <a onclick="openAuth('signup')">Create a free account</a></div>
+    `;
+  }
+
+  // default: login
+  return `
+    <div class="auth-tabs">
+      <div class="auth-tab active">Sign In</div>
+      <div class="auth-tab" onclick="openAuth('signup')">Create Account</div>
+    </div>
+    <h3 class="display">Welcome back</h3>
+    <p class="sub">Sign in to your RESTOCK account.</p>
+    <div class="field"><label>Email</label><input type="email" id="li-email" placeholder="you@email.com"></div>
+    <div class="field"><label>Password</label><input type="password" id="li-pass" placeholder="••••••••"></div>
+    <button class="submit-btn" onclick="doLogin()">Sign in</button>
+    <div class="switch-line">New here? <a onclick="openAuth('signup')">Create a free account</a> · <a onclick="openAuth('sell')">Become a seller</a></div>
+  `;
+}
+
+function doLogin(){
+  const email = document.getElementById('li-email').value || 'you@email.com';
+  currentUser = { name: email.split('@')[0], email, isSeller: false };
+  renderAuthArea();
+  closeModal();
+}
+
+function doSignup(){
+  const name = document.getElementById('su-name').value || 'Guest';
+  const email = document.getElementById('su-email').value || 'you@email.com';
+  currentUser = { name, email, isSeller: false };
+  renderAuthArea();
+  showAuthConfirm('Account created', `Welcome, ${name} — you're all set to start buying.`);
+}
+
+function doSellerSignup(){
+  const name = document.getElementById('sl-name').value || 'Guest Seller';
+  const email = document.getElementById('sl-email').value || 'you@email.com';
+  currentUser = { name, email, isSeller: true };
+  renderAuthArea();
+  const sellerId = 'SLR-' + Math.floor(1000 + Math.random()*9000);
+  document.getElementById('modal-content').innerHTML = `
+    <div class="confirm-box">
+      <div class="big-check">✅</div>
+      <h3 class="display">Seller account created</h3>
+      <p class="sub">Welcome aboard, ${name}. Your Rs 3,999 registration is confirmed.</p>
+      <div class="order-id">${sellerId}</div>
+      <p class="sub">This is a demo: no payment was actually charged and no listing dashboard exists yet. Wire this up to a real payment provider and a seller/listings backend before going live.</p>
+      <button class="submit-btn" onclick="closeModal()">Done</button>
+    </div>
+  `;
+}
+
+function showAuthConfirm(title, msg){
+  document.getElementById('modal-content').innerHTML = `
+    <div class="confirm-box">
+      <div class="big-check">✅</div>
+      <h3 class="display">${title}</h3>
+      <p class="sub">${msg}</p>
+      <button class="submit-btn" onclick="closeModal()">Done</button>
+    </div>
+  `;
+}
+
+function logOut(){
+  currentUser = null;
+  renderAuthArea();
+  closeModal();
+}
+
+/* ---------------- seller listings (submitted for manual review — no auto-publish) ---------------- */
+let myListings = [];
+
+async function submitListing(){
+  const title = document.getElementById('lg-title').value || 'Untitled game';
+  const plat = document.getElementById('lg-plat').value;
+  const cond = document.getElementById('lg-cond').value;
+  const price = parseInt(document.getElementById('lg-price').value) || 0;
+  const photo = document.getElementById('lg-photo').files[0];
+
+  const formData = new FormData();
+  formData.append('type', 'SELLER LISTING SUBMISSION');
+  formData.append('seller', currentUser ? currentUser.name : 'Unknown seller');
+  formData.append('sellerEmail', currentUser ? currentUser.email : 'unknown');
+  formData.append('title', title);
+  formData.append('platform', plat.toUpperCase());
+  formData.append('condition', cond);
+  formData.append('price', fmtPKR(price));
+  formData.append('_subject', `New seller listing: ${title} (${plat.toUpperCase()})`);
+  if(photo){ formData.append('photo', photo); }
+
+  let sent = false;
+  try{
+    const res = await fetch(ORDER_ENDPOINT, { method:'POST', headers:{'Accept':'application/json'}, body: formData });
+    sent = res.ok;
+  }catch(e){ sent = false; }
+
+  myListings.push({ title, plat, cond, price, status: sent ? 'Pending review' : 'Failed to send — try again' });
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="confirm-box">
+      <div class="big-check">${sent ? '✅' : '⚠️'}</div>
+      <h3 class="display">${sent ? 'Submitted for review' : 'Submission failed'}</h3>
+      <p class="sub">${sent
+        ? `${title} was sent to the RESTOCK team. We'll add it to the shelf once it's approved.`
+        : `Something went wrong sending this listing. Check your connection and try again.`}</p>
+      <button class="submit-btn" onclick="openAuth('account')">Back to account</button>
+    </div>
+  `;
+}
+
+renderAuthArea();
+
+
+renderSpines();
+renderFilters();
+renderGrid();
+renderCart();
+</script>
+
+</body>
+</html>
